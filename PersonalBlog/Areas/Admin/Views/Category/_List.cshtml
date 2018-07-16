@@ -1,0 +1,116 @@
+﻿@model PaginatedList<CategoryViewModel>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="zoom: 1;">
+            <div class="card-header">
+                <h4 class="card-title">جستجو</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="icon-plus4"></i></a></li>
+                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body collapse" aria-expanded="false">
+                <div class="card-block">
+                    <div class="row">
+                        <form asp-action="Index" method="get">
+                            <div class="col-md-3">
+                                <fieldset class="form-group position-relative has-icon-left mb-1">
+                                    <input type="text" name="searchString" placeholder="دسته‌بندی" class="form-control input-md" />
+                                    <div class="form-control-position">
+                                        <i class="icon-head"></i>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset class="form-group position-relative has-icon-left mb-1">
+                                    <select name="enabled" class="form-control input-md" placeholder="وضعیت نمایش">
+                                        <option value="0">همه</option>
+                                        <option value="1">فعال</option>
+                                        <option value="2">غیرفعال</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3 offset-md-3">
+                                <input type="submit" class="form-control btn btn-block btn-outline-green" value="جستجو" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="zoom: 1;">
+            <div class="card-header">
+                <h4 class="card-title">دسته‌بندی‌ها</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body" aria-expanded="false" style="">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-centered table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().Id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().AlternativeName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().ParentCategory)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().InsertDateTime)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var model in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => model.Id)</td>
+                                            <td><span class="text-bold-700"><a asp-area="" asp-controller="Category" asp-action="Show" asp-route-url="@(model.Url)">@Html.DisplayFor(modelItem => model.Name)</a></span></td>
+
+                                            <td>@Html.DisplayFor(modelItem => model.AlternativeName)</td>
+                                            <td>@Html.DisplayFor(modelItem => model.ParentCategory.Name)</td>
+
+                                            <td>@Html.DisplayFor(modelItem => model.InsertDateTime)</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@(model.Id)" class="btn btn-sm btn-light-blue" title="ویرایش" data-toggle="tooltip"><i class="centered far fa-edit"></i></a>
+                                                <form asp-action="Delete" method="POST" data-ajax="true" data-ajax-confirm="آیا از حذف اطمینان دارید؟" data-ajax-begin="onBegin" data-ajax-success="onSuccess" data-ajax-failure="onFailure">
+                                                    <input asp-for="@(model.Id)" class="hidden" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-red" title="حذف" data-toggle="tooltip"><i class="centered far fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            @await Html.PartialAsync("../Shared/_Pagination", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

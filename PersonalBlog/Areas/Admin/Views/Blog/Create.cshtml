@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "ایجاد پست";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/select2/Select2.min.css">
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="card-text">
+                        <p class="card-text"></p>
+                    </div>
+                    <form asp-action="Create" onsubmit="validateCategories();">
+                        @await Html.PartialAsync("_CreateOrEdit")
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("../Shared/_ValidationScriptsPartial");}
+
+    <script src="/lib/select2/Select2.min.js"></script>
+
+    <script src="/admin/js/CKEditor/ckeditor.js"></script>
+    <script src="/admin/js/CKEditor/build-config.js"></script>
+    <script src="/admin/js/CKEditor/config.js"></script>
+    <script src="/admin/js/CKEditor/styles.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#PostCategory').select2({
+                placeholder: "دسته‌بندی‌ها ...",
+                allowClear: true,
+                language: "fa",
+                dir: "rtl",
+            });
+
+            var $request = $.ajax({
+                url: "/Admin/Category/GetCategories",
+                dataType: "json",
+                type: "GET",
+                async: true,
+                cache: true,
+                delay: 250,
+            });
+
+            $request.then(function (data) {
+                for (var d = 0; d < data.length; d++) {
+                    var option = new Option(data[d].text, data[d].id);
+                    $('#PostCategory').select2().append(option);
+                }
+
+                $('#PostCategory').select2().trigger('change');
+            });
+        });
+
+        function validateCategories() {
+            var values = $("#PostCategory").val();
+            var categoryIds = "";
+            values.forEach(function (entry) {
+                categoryIds += entry + ",";
+            });
+
+            alert(categoryIds);
+
+            $("#CategoryList").val(categoryIds);
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#PostLocation').select2({
+                placeholder: "محل‌ها ...",
+                allowClear: true,
+                language: "fa",
+                dir: "rtl",
+            });
+
+            var $request = $.ajax({
+                url: "/Admin/Location/GetLocations",
+                dataType: "json",
+                type: "GET",
+                async: true,
+                cache: true,
+                delay: 250,
+            });
+
+            $request.then(function (data) {
+                var option = new Option("انتخاب کنید ...", -1, true, false);
+                $('#PostLocation').select2().append(option);
+
+                for (var d = 0; d < data.length; d++) {
+                    var option = new Option(data[d].text, data[d].id);
+                    $('#PostLocation').select2().append(option);
+                }
+
+                $('#PostLocation').select2().trigger('change');
+            });
+        });
+    </script>
+}

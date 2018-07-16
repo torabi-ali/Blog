@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "مدیریت بلاگ";
+}
+
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <a asp-controller="Category" asp-action="Index">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="deep-orange">@ViewData["TodayCategory"]</h3>
+                                <span>دسته‌بندی جدید</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-book2 deep-orange font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <a asp-controller="Blog" asp-action="Index">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="cyan">@ViewData["TodayPost"]</h3>
+                                <span>پست جدید</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-sticky-note cyan font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <a asp-controller="User" asp-action="Index">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="cyan">@ViewData["TodayUser"]</h3>
+                                <span>کاربر جدید</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user cyan font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

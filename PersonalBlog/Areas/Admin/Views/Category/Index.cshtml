@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "دسته‌بندی‌ها";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-6 col-lg-4 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="media">
+                    <div class="p-2 text-xs-center bg-teal media-left media-middle">
+                        <a asp-action="Create" title="اضافه کردن دسته‌بندی" data-toggle="tooltip"><i class="icon-file-o font-large-2 white"></i></a>
+                    </div>
+                    <div class="p-2 media-body">
+                        <h5 class="teal">پیشرفت دسته‌بندی‌ها</h5>
+                        <h5 class="text-bold-400">@(ViewData["Enabled"])</h5>
+                        <progress class="progress progress-sm progress-teal mt-1 mb-0" value="@(ViewData["Progress"])" max="100"></progress>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("_List")
+
+@section Scripts {
+    <script src="/lib/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function onBegin() {
+            swal({ text: 'لطفاً منتظر بمانید ...' });
+        }
+
+        function onSuccess() {
+            swal({
+                title: '',
+                text: 'عملیات با موفقیت انجام شد.',
+                type: 'success',
+                confirmButtonText: 'باشه'
+            }).then((result) => {
+                if (result.value) {
+                    location.reload(true);
+                }
+            });
+        }
+
+        function onFailure() {
+            swal({
+                title: 'خطا',
+                text: 'متأسفانه عملیات با موفقیت انجام نشد!',
+                type: 'error',
+                confirmButtonText: 'باشه'
+            });
+        }
+    </script>
+}

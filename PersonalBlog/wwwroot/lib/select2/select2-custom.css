@@ -1,0 +1,27 @@
+.select2-container .select2-selection--single {
+    height: 35px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    height: 35px;
+    line-height: 33px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 33px;
+}
+
+.select2-selection__rendered .select2-selection__clear {
+    height: 33px;
+    line-height: 35px;
+}
+
+.select2-choices {
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.select2-container .select2-results {
+    max-height: 200px;
+}

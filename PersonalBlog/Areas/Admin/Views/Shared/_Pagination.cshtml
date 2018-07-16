@@ -1,0 +1,26 @@
+﻿@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="centered">
+    <ul class="pagination">
+        <li class="@prevDisabled"><a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)"><i class="fa fa-angle-right"></i></a></li>
+        @{
+            for (int i = Model.AvailablePreviousPages; i > 0; i--)
+            {
+                <li><a asp-action="Index" asp-route-page="@(Model.PageIndex - i)">@(Model.PageIndex - i)</a></li>
+            }
+        }
+        <li class="active"><a>@(Model.PageIndex)</a></li>
+        @{
+            for (int i = 1; i <= Model.AvailableNextPages; i++)
+            {
+                <li><a asp-action="Index" asp-route-page="@(Model.PageIndex + i)">@(Model.PageIndex + i)</a></li>
+            }
+        }
+        <li class="@nextDisabled"><a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)"><i class="fa fa-angle-left"></i></a></li>
+        <li class="@nextDisabled"><a asp-action="Index" asp-route-page="@Model.TotalPages"><i class="fa fa-angle-double-left"></i></a></li>
+        <li class="disabled"><span>صفحه @Model.PageIndex از @Model.TotalPages صفحه</span></li>
+    </ul>
+</div>

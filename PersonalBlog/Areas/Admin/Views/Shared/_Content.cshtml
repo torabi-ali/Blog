@@ -1,0 +1,43 @@
+﻿@model ContentViewModel
+
+<h4 class="form-section"><i class="icon-pencil"></i> محتوا</h4>
+<div class="row">
+    <div class="col-md-5">
+        <div class="form-group seoValueNotifier">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group seoValueNotifier">
+            <label asp-for="Url" class="control-label"></label>
+            <input asp-for="Url" class="form-control" />
+            <span asp-validation-for="Url" class="text-danger"></span>
+        </div>
+        <div class="form-group seoValueNotifier">
+            <label asp-for="FocusKeyword" class="control-label"></label>
+            <input asp-for="FocusKeyword" class="form-control" />
+            <span asp-validation-for="FocusKeyword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Summary" class="control-label"></label>
+            <textarea asp-for="Summary" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="Summary" class="text-danger"></span>
+        </div>
+        <div class="form-group seoValueNotifier">
+            <label asp-for="MetaDescription" class="control-label"></label>
+            <textarea asp-for="MetaDescription" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="MetaDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="seoLoading"></div>
+        <div class="seoResult">
+            @await Html.PartialAsync("../Shared/_SEO")
+        </div>
+    </div>
+</div>
+<div class="form-group" id="div_CKEditor">
+    <label asp-for="Text" class="control-label"></label>
+    <textarea asp-for="Text" class="form-control" id="CKEditor"></textarea>
+    <span asp-validation-for="Text" class="text-danger"></span>
+</div>
