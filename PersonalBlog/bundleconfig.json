@@ -28,20 +28,18 @@
     "outputFileName": "wwwroot/admin/css/PersonalBlog-admin.min.css",
     "inputFiles": [
       "wwwroot/admin/css/bootstrap.css",
-      "wwwroot/admin/css/flag-icon-css/css/flag-icon.css",
-      "wwwroot/admin/css/icomoon/icomoon.css",
+      "wwwroot/admin/fonts/flag-icon-css/css/flag-icon.css",
+      "wwwroot/admin/fonts/icomoon/icomoon.css",
       "wwwroot/fonts/FontAwesome.css",
-      "wwwroot/admin/css/pace.css",
+      "wwwroot/admin/vendors/css/extensions/pace.css",
       "wwwroot/admin/css/bootstrap-extended.css",
       "wwwroot/admin/css/app.css",
       "wwwroot/admin/css/colors.css",
-      "wwwroot/admin/css/custom-rtl.css",
-      "wwwroot/admin/css/vertical-menu.css",
-      "wwwroot/admin/css/vertical-overlay-menu.css",
-      "wwwroot/admin/css/palette-gradient.css",
-      "wwwroot/lib/sweetalert/sweetalert2.css",
-      "wwwroot/fonts/Samim.css",
-      "wwwroot/admin/css/site.css"
+      "wwwroot/admin/css/core/menu/menu-types/vertical-menu.css",
+      "wwwroot/admin/css/core/menu/menu-types/vertical-overlay-menu.css",
+      "wwwroot/admin/css/core/colors/palette-gradient.css",
+      "wwwroot/lib/sweetalert2/sweetalert2.css",
+      "wwwroot/admin/css/style.css"
     ],
     "minify": {
       "enabled": false,
@@ -52,19 +50,20 @@
   {
     "outputFileName": "wwwroot/admin/js/PersonalBlog-admin.min.js",
     "inputFiles": [
-      "wwwroot/admin/js/jquery.min.js",
-      "wwwroot/admin/js/tether.min.js",
-      "wwwroot/admin/js/bootstrap.min.js",
-      "wwwroot/admin/js/perfect-scrollbar.jquery.min.js",
-      "wwwroot/admin/js/unison.min.js",
-      "wwwroot/admin/js/blockUI.min.js",
-      "wwwroot/admin/js/jquery.matchHeight-min.js",
-      "wwwroot/admin/js/screenfull.min.js",
-      "wwwroot/admin/js/pace.min.js",
-      "wwwroot/admin/js/chart.min.js",
-      "wwwroot/admin/js/app-menu.js",
-      "wwwroot/admin/js/app.js",
-      "wwwroot/lib/sweetalert/sweetalert2.js"
+      "wwwroot/admin/js/core/libraries/jquery.min.js",
+      "wwwroot/admin/vendors/js/ui/tether.min.js",
+      "wwwroot/admin/js/core/libraries/bootstrap.min.js",
+      "wwwroot/admin/vendors/js/ui/perfect-scrollbar.jquery.min.js",
+      "wwwroot/admin/vendors/js/ui/unison.min.js",
+      "wwwroot/admin/vendors/js/ui/blockUI.min.js",
+      "wwwroot/admin/vendors/js/ui/jquery.matchHeight-min.js",
+      "wwwroot/admin/vendors/js/ui/screenfull.min.js",
+      "wwwroot/admin/vendors/js/extensions/pace.min.js",
+      "wwwroot/admin/vendors/js/charts/chart.min.js",
+      "wwwroot/admin/js/core/app-menu.js",
+      "wwwroot/admin/js/core/app.js",
+      "wwwroot/admin/js/scripts/pages/dashboard-lite.js",
+      "wwwroot/lib/sweetalert2/sweetalert2.js"
     ],
     // Optionally specify minification options
     "minify": {
@@ -77,12 +76,10 @@
 
   //CKEditor
   {
-    "outputFileName": "wwwroot/admin/js/CKEditor/CKEditor.min.js",
+    "outputFileName": "wwwroot/lib/ckeditor5/ckeditor.min.js",
     "inputFiles": [
-      "wwwroot/admin/js/CKEditor/ckeditor.js",
-      "wwwroot/admin/js/CKEditor/build-config.js",
-      "wwwroot/admin/js/CKEditor/config.js",
-      "wwwroot/admin/js/CKEditor/styles.js"
+      "wwwroot/lib/ckeditor5/ckeditor.js",
+      "wwwroot/lib/ckeditor5/config.js"
     ],
     // Optionally specify minification options
     "minify": {
