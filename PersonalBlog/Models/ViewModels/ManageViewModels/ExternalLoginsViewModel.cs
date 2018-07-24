@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace PersonalBlog.Models.ManageViewModels
+namespace PersonalBlog.Models.ViewModels
 {
     public class ExternalLoginsViewModel
     {

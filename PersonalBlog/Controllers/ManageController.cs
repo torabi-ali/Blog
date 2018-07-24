@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PersonalBlog.Models;
-using PersonalBlog.Models.ManageViewModels;
+using PersonalBlog.Models.ViewModels;
 using PersonalBlog.Services;
 using System;
 using System.Linq;

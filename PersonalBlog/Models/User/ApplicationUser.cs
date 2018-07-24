@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Collections.Generic;
 
 namespace PersonalBlog.Models
 {
@@ -13,6 +14,8 @@ namespace PersonalBlog.Models
         public bool Gender { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool IsSuspended { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 
     public class ApplicationUserConfig : IEntityTypeConfiguration<ApplicationUser>

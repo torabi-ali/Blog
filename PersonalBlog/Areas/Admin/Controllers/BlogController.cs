@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PersonalBlog.Data;
 using PersonalBlog.Extensions;
 using PersonalBlog.Models;
+using PersonalBlog.Models.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 

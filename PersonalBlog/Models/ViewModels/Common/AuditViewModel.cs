@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PersonalBlog.Models
+namespace PersonalBlog.Models.ViewModels
 {
     public abstract class AuditViewModel : BaseViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PersonalBlog.Models
+namespace PersonalBlog.Models.ViewModels
 {
     public class SEOViewModel
     {

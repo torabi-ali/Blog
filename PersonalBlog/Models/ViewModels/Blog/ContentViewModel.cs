@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PersonalBlog.Models
+namespace PersonalBlog.Models.ViewModels
 {
     public class ContentViewModel : AuditViewModel
     {

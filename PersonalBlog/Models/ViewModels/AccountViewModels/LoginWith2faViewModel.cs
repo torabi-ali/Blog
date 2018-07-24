@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PersonalBlog.Models.AccountViewModels
+namespace PersonalBlog.Models.ViewModels
 {
     public class LoginWith2faViewModel
     {

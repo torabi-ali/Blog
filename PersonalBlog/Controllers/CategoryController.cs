@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PersonalBlog.Data;
-using PersonalBlog.Models;
+using PersonalBlog.Models.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 

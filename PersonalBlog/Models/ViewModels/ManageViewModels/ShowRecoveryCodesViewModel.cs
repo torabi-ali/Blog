@@ -1,4 +1,4 @@
-﻿namespace PersonalBlog.Models.ManageViewModels
+﻿namespace PersonalBlog.Models.ViewModels
 {
     public class ShowRecoveryCodesViewModel
     {

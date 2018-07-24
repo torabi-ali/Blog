@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PersonalBlog.Models;
+using PersonalBlog.Models.ViewModels;
 using System.Diagnostics;
 
 namespace PersonalBlog.Controllers

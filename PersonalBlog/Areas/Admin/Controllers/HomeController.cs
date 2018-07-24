@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.Data;
-using PersonalBlog.Models;
+using PersonalBlog.Models.ViewModels;
 using System;
 using System.Diagnostics;
 using System.Linq;

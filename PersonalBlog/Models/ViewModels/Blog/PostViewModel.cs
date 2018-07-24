@@ -3,7 +3,7 @@ using PersonalBlog.Extensions;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PersonalBlog.Models
+namespace PersonalBlog.Models.ViewModels
 {
     public class PostViewModel : ContentViewModel
     {
