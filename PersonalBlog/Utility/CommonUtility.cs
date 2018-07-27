@@ -211,4 +211,19 @@ public static class CommonUtility
             return true;
         }
     }
+
+    public static T ConvertTo<T>(this object obj)
+    {
+        return ConvertTo(obj, typeof(T)).CastTo<T>();
+    }
+
+    public static object ConvertTo(this object obj, Type type)
+    {
+        return Convert.ChangeType(obj, type);
+    }
+
+    public static T CastTo<T>(this object obj)
+    {
+        return (T)obj;
+    }
 }

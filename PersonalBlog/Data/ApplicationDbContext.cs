@@ -18,9 +18,11 @@ namespace PersonalBlog.Data
         }
 
         #region DbSet
-        public DbSet<Category> Category { get; set; }
         public DbSet<Post> Post { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<PostCategory> PostCategory { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Setting> Settings { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -29,8 +31,10 @@ namespace PersonalBlog.Data
 
             builder.ApplyConfiguration(new ApplicationUserConfig());
             builder.ApplyConfiguration(new PostConfig());
-            builder.ApplyConfiguration(new PostCategoryConfig());
             builder.ApplyConfiguration(new CategoryConfig());
+            builder.ApplyConfiguration(new PostCategoryConfig());
+            builder.ApplyConfiguration(new CommentConfig());
+            builder.ApplyConfiguration(new SettingConfig());
         }
 
         public new int SaveChanges()

@@ -13,6 +13,7 @@ namespace PersonalBlog.Models
 
         //Navigation properties
         public virtual ICollection<PostCategory> Categories { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 
     public class PostConfig : IEntityTypeConfiguration<Post>

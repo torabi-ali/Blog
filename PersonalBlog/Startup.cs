@@ -25,6 +25,8 @@ namespace PersonalBlog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -108,7 +110,15 @@ namespace PersonalBlog
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers["Cache-Control"] = "private, max-age=43200";
+
+                    context.Context.Response.Headers["Expires"] = DateTime.UtcNow.AddHours(12).ToString("R");
+                }
+            });
 
             app.UseAuthentication();
 

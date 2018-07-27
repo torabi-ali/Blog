@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Settings";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("_List")
+
+@section Scripts {
+    <script src="/lib/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function onBegin() {
+            swal({ text: 'لطفاً منتظر بمانید ...' });
+        }
+
+        function onSuccess() {
+            swal({
+                title: '',
+                text: 'عملیات با موفقیت انجام شد.',
+                type: 'success',
+                confirmButtonText: 'باشه'
+            }).then((result) => {
+                if (result.value) {
+                    location.reload(true);
+                }
+            });
+        }
+
+        function onFailure() {
+            swal({
+                title: 'خطا',
+                text: 'متأسفانه عملیات با موفقیت انجام نشد!',
+                type: 'error',
+                confirmButtonText: 'باشه'
+            });
+        }
+    </script>
+}

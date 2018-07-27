@@ -7,7 +7,7 @@ namespace PersonalBlog.Models
     public class Comment : BaseEntity
     {
         public string Text { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime InsertDateTime { get; set; }
         public int Like { get; set; }
         public bool IsActive { get; set; }
         public bool IsOffensive { get; set; }
