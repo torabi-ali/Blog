@@ -1,0 +1,124 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  //Admin css
+  {
+    "outputFileName": "wwwroot/admin/css/Blog-admin.min.css",
+    "inputFiles": [
+      "wwwroot/admin/css/bootstrap.css",
+      "wwwroot/admin/fonts/flag-icon-css/css/flag-icon.css",
+      "wwwroot/admin/fonts/icomoon/icomoon.css",
+      "wwwroot/fonts/FontAwesome.css",
+      "wwwroot/admin/vendors/css/extensions/pace.css",
+      "wwwroot/admin/css/bootstrap-extended.css",
+      "wwwroot/admin/css/app.css",
+      "wwwroot/admin/css/colors.css",
+      "wwwroot/admin/css/core/menu/menu-types/vertical-menu.css",
+      "wwwroot/admin/css/core/menu/menu-types/vertical-overlay-menu.css",
+      "wwwroot/admin/css/core/colors/palette-gradient.css",
+      "wwwroot/lib/sweetalert2/sweetalert2.css",
+      "wwwroot/admin/css/style.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  //Admin js
+  {
+    "outputFileName": "wwwroot/admin/js/Blog-admin.min.js",
+    "inputFiles": [
+      "wwwroot/admin/js/core/libraries/jquery.min.js",
+      "wwwroot/admin/vendors/js/ui/tether.min.js",
+      "wwwroot/admin/js/core/libraries/bootstrap.min.js",
+      "wwwroot/admin/vendors/js/ui/perfect-scrollbar.jquery.min.js",
+      "wwwroot/admin/vendors/js/ui/unison.min.js",
+      "wwwroot/admin/vendors/js/ui/blockUI.min.js",
+      "wwwroot/admin/vendors/js/ui/jquery.matchHeight-min.js",
+      "wwwroot/admin/vendors/js/ui/screenfull.min.js",
+      "wwwroot/admin/vendors/js/extensions/pace.min.js",
+      "wwwroot/admin/vendors/js/charts/chart.min.js",
+      "wwwroot/admin/js/core/app-menu.js",
+      "wwwroot/admin/js/core/app.js",
+      "wwwroot/admin/js/scripts/pages/dashboard-lite.js",
+      "wwwroot/lib/sweetalert2/sweetalert2.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+
+  //CKEditor
+  {
+    "outputFileName": "wwwroot/lib/ckeditor5/ckeditor.min.js",
+    "inputFiles": [
+      "wwwroot/lib/ckeditor5/ckeditor.js",
+      "wwwroot/lib/ckeditor5/config.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+
+  //Select2 - js
+  {
+    "outputFileName": "wwwroot/lib/select2/Select2.min.js",
+    "inputFiles": [
+      "wwwroot/lib/select2/select2.js",
+      "wwwroot/lib/select2/fa.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+
+  //Select2 - css
+  {
+    "outputFileName": "wwwroot/lib/select2/Select2.min.css",
+    "inputFiles": [
+      "wwwroot/lib/select2/select2.css",
+      "wwwroot/lib/select2/Select2-custom.css"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  }
+]

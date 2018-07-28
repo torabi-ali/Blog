@@ -1,0 +1,87 @@
+﻿@model Blog.DomainClass.Setting
+
+@{
+    ViewData["Title"] = "Setting";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/select2/Select2.min.css">
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="card-text">
+                        <p class="card-text"></p>
+                    </div>
+                    <form asp-action="Create">
+                        @await Html.PartialAsync("_CreateOrEdit")
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("../Shared/_ValidationScriptsPartial");}
+
+    <script src="/lib/select2/Select2.min.js"></script>
+
+    <script src="/lib/ckeditor5/ckeditor.min.js"></script>
+
+    @*<script>
+            ClassicEditor.create(document.querySelector('#CKEditor'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ParentCategory').select2({
+                placeholder: "دسته‌بندی‌ها ...",
+                allowClear: true,
+                language: "fa",
+                dir: "rtl",
+            });
+
+            var $request = $.ajax({
+                url: "/Admin/Category/GetCategories",
+                dataType: "json",
+                type: "GET",
+                async: true,
+                cache: true,
+                delay: 250,
+            });
+
+            $request.then(function (data) {
+                var option = new Option("انتخاب کنید ...", -1, true, true);
+                $('#ParentCategory').select2().append(option);
+
+                for (var d = 0; d < data.length; d++) {
+                    var option = new Option(data[d].text, data[d].id);
+                    $('#ParentCategory').select2().append(option);
+                }
+
+                $('#ParentCategory').select2().trigger('change');
+            });
+        });
+    </script>
+}

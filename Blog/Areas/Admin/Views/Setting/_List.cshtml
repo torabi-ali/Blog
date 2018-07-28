@@ -1,0 +1,62 @@
+﻿@model PaginatedList<Blog.DomainClass.Setting>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="zoom: 1;">
+            <div class="card-header">
+                <h4 class="card-title">دسته‌بندی‌ها</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body" aria-expanded="false" style="">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-centered table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().Id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Single().Type)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var model in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => model.Id)</td>
+                                            <td><span class="text-bold-700">@Html.DisplayFor(modelItem => model.Name)</td>
+
+                                            <td>@Html.DisplayFor(modelItem => model.Type)</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@(model.Id)" class="btn btn-sm btn-light-blue" title="ویرایش" data-toggle="tooltip"><i class="centered far fa-edit"></i></a>
+                                                <form asp-action="Delete" method="POST" data-ajax="true" data-ajax-confirm="آیا از حذف اطمینان دارید؟" data-ajax-begin="onBegin" data-ajax-success="onSuccess" data-ajax-failure="onFailure">
+                                                    <input asp-for="@(model.Id)" class="hidden" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-red" title="حذف" data-toggle="tooltip"><i class="centered far fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            @await Html.PartialAsync("../Shared/_Pagination", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
