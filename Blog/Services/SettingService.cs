@@ -1,10 +1,8 @@
 ﻿using Blog.Data;
 using Blog.DomainClass;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Blog.Services
 {
@@ -27,54 +25,38 @@ namespace Blog.Services
             }
         }
 
-        public virtual async Task SaveSettingAsync<T>(T settings) where T : ISettings, new()
-        {
-            foreach (var prop in typeof(T).GetProperties().Where(p => p.CanRead && p.CanWrite))
-            {
-                var value = Convert.ToString(prop.GetValue(settings, null));
-                var setting = new Setting(prop.Name, typeof(T).Name, value);
-                await CreateSettingAsync(setting);
-            }
-        }
-
         public void CreateSetting(Setting setting)
         {
             _context.Add(setting);
             _context.SaveChanges();
         }
 
-        public virtual async Task CreateSettingAsync(Setting setting)
+        public void UpdateSetting(Setting setting)
         {
-            await _context.AddAsync(setting);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateSettingAsync(Setting setting)
-        {
-            var settings = await GetAllSettingsAsync();
+            var settings = GetAllSettings();
             var item = settings.FirstOrDefault(p => p.Id == setting.Id);
 
             item.Name = setting.Name;
 
             _context.Update(item);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteSettingAsync(Setting setting)
+        public void DeleteSetting(Setting setting)
         {
-            var settings = await GetAllSettingsAsync();
+            var settings = GetAllSettings();
             var item = settings.FirstOrDefault(p => p.Id == setting.Id);
 
             _context.Remove(item);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task<IList<Setting>> GetAllSettingsAsync()
+        public IList<Setting> GetAllSettings()
         {
-            return await _context.Settings.OrderBy(p => p.Name).ToListAsync();
+            return _context.Settings.OrderBy(p => p.Name).ToList();
         }
 
-        public virtual async Task<T> LoadSettingAsync<T>() where T : ISettings, new()
+        public virtual T LoadSetting<T>() where T : ISettings, new()
         {
             var settings = Activator.CreateInstance<T>();
 
@@ -82,7 +64,7 @@ namespace Blog.Services
             {
                 var name = typeof(T).Name + "." + prop.Name;
                 //load by store
-                var setting = await GetSettingByKeyAsync<string>(name);
+                var setting = GetSettingByKey<string>(name);
                 if (setting == null)
                     continue;
 
@@ -93,17 +75,17 @@ namespace Blog.Services
             return settings;
         }
 
-        public virtual async Task<T> GetSettingByKeyAsync<T>(string name, T defaultValue = default(T))
+        public virtual T GetSettingByKey<T>(string name, T defaultValue = default(T))
         {
-            var setting = await GetSettingAsync(name);
+            var setting = GetSetting(name);
             if (setting != null)
                 return setting.Value.ConvertTo<T>();
             return defaultValue;
         }
 
-        public virtual async Task<Setting> GetSettingAsync(string name)
+        public virtual Setting GetSetting(string name)
         {
-            var settings = await GetAllSettingsAsync();
+            var settings = GetAllSettings();
             var settingsByName = settings.SingleOrDefault(p => p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
             return settingsByName;
         }

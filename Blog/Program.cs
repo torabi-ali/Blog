@@ -1,4 +1,6 @@
 ﻿using Blog.Data;
+using Blog.DomainClass;
+using Blog.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

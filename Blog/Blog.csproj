@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Blog.DomainClass\Blog.DomainClass.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
 </Project>

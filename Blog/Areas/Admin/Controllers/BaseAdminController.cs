@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Security.Claims;
 
 namespace Blog.Areas.Admin.Controllers
 {
@@ -9,7 +11,7 @@ namespace Blog.Areas.Admin.Controllers
         internal int? currentUserId;
         protected BaseAdminController()
         {
-            //currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier).TryToInt();
+            //currentUserId = Int32.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
         }
     }
 }
