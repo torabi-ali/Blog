@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Blog.Models;
+﻿using Blog.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Blog.Models;
 
 namespace Blog.Controllers
 {

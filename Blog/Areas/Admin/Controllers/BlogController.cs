@@ -2,7 +2,6 @@
 using Blog.DomainClass;
 using Blog.Extensions;
 using Blog.Models;
-using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
